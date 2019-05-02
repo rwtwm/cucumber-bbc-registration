@@ -1,7 +1,7 @@
 Feature: The password box on the registration page detects invalid input
 
   Scenario Outline: A user inputs strings into the password field that are not valid as passwords
-    Given I am on the login page
+    Given I am on the registration page
     When I input invalid string <word>
     Then I will receive an error message containing <string>
 
