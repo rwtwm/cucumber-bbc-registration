@@ -1,30 +1,48 @@
 package com.sparta.waj;
 
+import com.sparta.waj.bbcwebsite.bbcpageobjects.RegistrationPage;
+import com.sparta.waj.bbcwebsite.seleniumconfig.SeleniumConfig;
+import cucumber.api.java.After;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.junit.Assert;
+import org.openqa.selenium.WebDriver;
 
 public class StepDefinitions
 {
+    WebDriver driver;
+    RegistrationPage regPage;
+
     @Given("I am on the registration page")
     public void i_am_on_the_reg_page() {
-        //this is the navigation to the registration page
-        // with the password entry box present
+        driver = new SeleniumConfig("").getDriver();
+        regPage = new RegistrationPage(driver);
+
+        regPage.hold().clickOverage().hold()
+                .inputDate()
+                .inputMonth()
+                .inputYear()
+                .clickSubmit().hold();
     }
 
     @When("I input invalid string {word}")
     public void inputString(String password)
     {
-        //This is where I call selenium 'get keys on the
-        // password input box
-        //remember to tab out of the box
+        regPage.inputPassword(password);
     }
 
     @Then("I will receive an error message containing {string}")
     public void compareErrorMessage(String error)
     {
-        //Get error message from the pop-up
-        //assert true on string contains
+        String errorString = regPage.readPwdError();
+        Assert.assertTrue(errorString.contains(error));
+    }
+
+    @After
+    public void quitDriver()
+    {
+        driver.quit();
     }
 
 

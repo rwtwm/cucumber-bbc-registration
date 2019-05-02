@@ -6,7 +6,8 @@ Feature: The password box on the registration page detects invalid input
     Then I will receive an error message containing <string>
 
     Examples:
-      | word     | string                          |
-      | 00000000 | "include a letter"              |
-      | aaaaaaaa | "something that isn't a letter" |
-      | a1a1a1   | "eight characters or more       |
+      | word      | string                          |
+      | 00000000  | "include a letter"              |
+      | aaaaaaaa  | "something that isn't a letter" |
+      | a1a1a1    | "eight characters or more"       |
+      | password1 | "hard to guess"                  |
