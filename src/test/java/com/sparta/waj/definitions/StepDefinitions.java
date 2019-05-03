@@ -1,4 +1,4 @@
-package com.sparta.waj;
+package com.sparta.waj.definitions;
 
 import com.sparta.waj.bbcwebsite.bbcpageobjects.RegistrationPage;
 import com.sparta.waj.bbcwebsite.seleniumconfig.SeleniumConfig;
